@@ -1,4 +1,5 @@
 const packageReadmeDescriptionMatchesRule = {
+	applicable: context => context.helpers.fileExists('./package.json'),
 	check: context => {
 		const packageJson = JSON.parse(context.helpers.getFileContents('./package.json'));
 

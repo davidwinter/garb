@@ -11,7 +11,7 @@ import ProjectConsistent from './index.js';
 	const spinner = ora('Checking project config').start();
 
 	const results = await projectconsistent.check();
-	const ruleResults = results.map(item => item.value);
+	const ruleResults = results.map(item => item.value).filter(item => item);
 
 	const fails = ruleResults.filter(item => !item.result);
 

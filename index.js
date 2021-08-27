@@ -18,12 +18,17 @@ class ProjectConfig {
 		const context = {
 			helpers: {
 				getFileContents: path => this._getFileContents(path),
+				fileExists: path => this._fileExists(path),
 			},
 		};
 
 		for (const ruleName of this.rules) {
 			const rule = import(`./rules/${ruleName}-rule.js`).then(ruleObject => {
 				try {
+					if ('applicable' in ruleObject.default && !ruleObject.default.applicable(context)) {
+						return;
+					}
+
 					ruleObject.default.check(context);
 					return {rule: ruleName, result: true};
 				} catch (error) {
@@ -39,6 +44,10 @@ class ProjectConfig {
 
 	_getFileContents(path) {
 		return this.fs.readFileSync(path, {encoding: 'utf-8'});
+	}
+
+	_fileExists(path) {
+		return this.fs.existsSync(path);
 	}
 }
 
