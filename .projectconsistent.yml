@@ -2,3 +2,4 @@ rules:
   - readme/title
   - readme/description
   - nodejs/package-readme-description-matches
+  - nodejs/github-dependabot

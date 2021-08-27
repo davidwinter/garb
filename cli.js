@@ -23,7 +23,7 @@ import ProjectConsistent from './index.js';
 	spinner.stop();
 
 	for (const fail of fails) {
-		console.log(`${chalk.red('✖')}  ${fail.message}  ${chalk.grey(fail.rule)}`);
+		console.log(`${chalk.red('✖')}  ${fail.type}: ${fail.error}   ${chalk.grey(fail.rule)}`);
 	}
 
 	console.log();

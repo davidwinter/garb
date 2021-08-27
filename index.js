@@ -19,6 +19,7 @@ class ProjectConfig {
 			helpers: {
 				getFileContents: path => this._getFileContents(path),
 				fileExists: path => this._fileExists(path),
+				yamlParse: data => this._yamlParse(data),
 			},
 		};
 
@@ -30,9 +31,10 @@ class ProjectConfig {
 					}
 
 					ruleObject.default.check(context);
+
 					return {rule: ruleName, result: true};
 				} catch (error) {
-					return {rule: ruleName, result: false, message: error.message};
+					return {rule: ruleName, result: false, error: error.message, type: error.constructor.name};
 				}
 			});
 
@@ -48,6 +50,10 @@ class ProjectConfig {
 
 	_fileExists(path) {
 		return this.fs.existsSync(path);
+	}
+
+	_yamlParse(data) {
+		return YAML.parse(data);
 	}
 }
 
