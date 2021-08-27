@@ -5,7 +5,7 @@ class ProjectConfig {
 	constructor({fs = filesystem} = {}) {
 		this.fs = fs;
 
-		this.config = YAML.parse(this._getFileContents('./.projectconfig.yml'));
+		this.config = YAML.parse(this._getFileContents('./.projectconsistent.yml'));
 	}
 
 	get rules() {

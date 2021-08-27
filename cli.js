@@ -3,14 +3,14 @@
 import process from 'node:process';
 import ora from 'ora';
 import chalk from 'chalk';
-import ProjectConfig from './index.js';
+import ProjectConsistent from './index.js';
 
 (async () => {
-	const projectconfig = new ProjectConfig();
+	const projectconsistent = new ProjectConsistent();
 
 	const spinner = ora('Checking project config').start();
 
-	const results = await projectconfig.check();
+	const results = await projectconsistent.check();
 	const ruleResults = results.map(item => item.value);
 
 	const fails = ruleResults.filter(item => !item.result);
