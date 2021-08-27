@@ -5,7 +5,7 @@ import ProjectConsistent from './index.js';
 test('it loads projectconsistent to set rules', t => {
 	const project = new ProjectConsistent();
 
-	t.truthy(project.rules.includes('readme-title'));
+	t.truthy(project.rules.includes('readme/title'));
 });
 
 test('it checks against all rules', async t => {

@@ -1,6 +1,6 @@
 import test from 'ava';
 
-import readmeTitleRule from './readme-title-rule.js';
+import readmeTitleRule from './title-rule.js';
 
 test('it passes with the correct readme title', t => {
 	const context = {
